@@ -12,18 +12,27 @@ direction_dict = {
 vector_or = ["N", "E", "S", "O"]
 
 
-def get_orientation_name(orientacion):
-    if orientacion == "N":
+def get_orientation_name(orientation):
+    """
+    :param orientation:
+    :return: orientation name
+    """
+    if orientation == "N":
         return "Norte"
-    elif orientacion == "S":
+    elif orientation == "S":
         return "Sur"
-    elif orientacion == "O":
+    elif orientation == "O":
         return "Oeste"
-    elif orientacion == "E":
+    elif orientation == "E":
         return "Este"
 
 
 def get_ort_vector(orientacion, direction):
+    """
+    :param orientacion: N,S,O,E
+    :param direction: I, D
+    :return: coordinates that will be added to the current coordinates
+    """
     pos = vector_or.index(orientacion)
     if direction == "D":
         if pos < 3:
@@ -40,6 +49,11 @@ def get_ort_vector(orientacion, direction):
 
 
 def get_orientation(orientacion, direction):
+    """
+    :param orientacion: N,S,O,E
+    :param direction: I, D
+    :return: orientacion: N,S,O,E
+    """
     pos = vector_or.index(orientacion)
     if direction == "D":
         if pos < 3:

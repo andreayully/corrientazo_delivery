@@ -1,10 +1,11 @@
-"""
-Read file
-"""
 from aux_functions import *
+import os
 
 
 class Punto:
+    """
+    Class that stores the properties of points
+    """
 
     def __init__(self, x=0, y=0):
         self.x = x
@@ -21,8 +22,23 @@ class Punto:
 
 
 def read_order_file():
-    file_path = input("File path: ")
-    file = open(file_path, "r")
+    """
+    Read order_file from input console
+    :return: final coordinates
+
+    """
+    try:
+        file_path = input("INGRESE EL ARCHIVO DE RUTAS: ")
+        file = open(file_path, "r")
+        file_size = os.path.getsize(file_path)
+        if file_size == 0:
+            raise Exception
+    except FileNotFoundError:
+        print("the indicated file does not exist")
+        exit()
+    except Exception:
+        print("File empty")
+        exit()
     drone_id = file_path.split(".")[0].replace("in", "")
     current_position = Punto(0, 0)
     current_X = 0
@@ -50,6 +66,11 @@ def read_order_file():
 
 
 def write_out_file(out_list):
+    """
+    Write file outN.txt
+    :param out_list:
+    :return: file
+    """
     drone_id = out_list[0]['drone_id']
     file_name = "out" + drone_id + ".txt"
     file = open(file_name, "w+")
@@ -59,3 +80,4 @@ def write_out_file(out_list):
         file.write(text)
     file.close()
     print("Archivo creado con exito")
+    return True
