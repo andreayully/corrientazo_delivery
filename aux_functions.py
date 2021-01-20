@@ -1,7 +1,11 @@
+import math
+
 norte = (0, 1)
 oeste = (-1, 0)
 sur = (0, -1)
 este = (1, 0)
+
+max_perimetre = 62.83  #(r = 10)
 
 direction_dict = {
     'N': norte,
@@ -10,6 +14,21 @@ direction_dict = {
     'O': oeste
 }
 vector_or = ["N", "E", "S", "O"]
+
+
+def check_distance(current_x, currenty):
+    """
+    Check if the current point is within the perimeter
+    :param current_x:
+    :param currenty:
+    :return:
+    """
+    is_in_perimeter = True
+    distance = math.sqrt((current_x - 0) ** 2 + (currenty - 0) ** 2)
+    perimeter = 2 * 3.14 * distance
+    if perimeter > max_perimetre:
+        is_in_perimeter = False
+    return is_in_perimeter
 
 
 def get_orientation_name(orientation):
