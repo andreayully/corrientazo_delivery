@@ -25,7 +25,6 @@ def read_order_file():
     """
     Read order_file from input console
     :return: final coordinates
-
     """
     try:
         file_path = input("INGRESE EL ARCHIVO DE RUTAS: ")
@@ -57,6 +56,10 @@ def read_order_file():
             elif "I" in ord:
                 coord = get_ort_vector(orientation, "I")
                 orientation = get_orientation(orientation, "I")
+        if not check_distance(current_X, current_y):
+            msj = "La coordenada ({}, {}) esta fuera de perimetro".format(current_X, current_y)
+            print(msj)
+            exit()
         out_list.append({
             'drone_id': drone_id,
             'coord': (current_X, current_y),
@@ -80,4 +83,3 @@ def write_out_file(out_list):
         file.write(text)
     file.close()
     print("Archivo creado con exito")
-    return True
