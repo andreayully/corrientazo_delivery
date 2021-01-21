@@ -10,8 +10,6 @@ class TestDeliveryRooutes(unittest.TestCase):
     def test_read_order_file(self):
         self.assertEqual(delivery_routes.read_order_file(), expect_ans)
 
-    def test_exeption_file(self):
-        self.assertRaises(FileNotFoundError, delivery_routes.read_order_file())
 
 
 if __name__ == "__main__":

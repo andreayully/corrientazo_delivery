@@ -5,7 +5,7 @@ oeste = (-1, 0)
 sur = (0, -1)
 este = (1, 0)
 
-max_perimetre = 62.83  #(r = 10)
+max_perimetre = 62.83  # (r = 10)
 
 direction_dict = {
     'N': norte,
